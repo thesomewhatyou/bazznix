@@ -6,7 +6,6 @@
   options.ar.home = {
     apps = {
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
-      firefox.enable = lib.mkEnableOption "Firefox web browser.";
       shell.enable = lib.mkEnableOption "Shell with defaults.";
     };
 
