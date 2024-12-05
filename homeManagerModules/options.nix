@@ -3,7 +3,7 @@
   osConfig,
   ...
 }: {
-  options.ar.home = {
+  options.steamed-nix.home = {
     apps = {
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       shell.enable = lib.mkEnableOption "Shell with defaults.";
@@ -12,7 +12,7 @@
     desktop = {
       kde.enable = lib.mkOption {
         description = "KDE Plasma with sane defaults.";
-        default = osConfig.ar.desktop.kde.enable;
+        default = osConfig.steamed-nix.desktop.kde.enable;
         type = lib.types.bool;
       };
     };

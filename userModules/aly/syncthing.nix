@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.ar.users.aly.syncthing;
+  cfg = config.steamed-nix.users.aly.syncthing;
 in {
   config = lib.mkIf cfg.enable {
     systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
@@ -62,14 +62,14 @@ in {
               };
             };
           }
-          // lib.attrsets.optionalAttrs (config.ar.users.aly.syncthing.syncMusic) {
+          // lib.attrsets.optionalAttrs (config.steamed-nix.users.aly.syncthing.syncMusic) {
             "music" = {
               devices = ["lavaridge" "mauville" "petalburg" "rustboro"];
               id = "6nzmu-z9der";
-              path = config.ar.users.aly.syncthing.musicPath;
+              path = config.steamed-nix.users.aly.syncthing.musicPath;
             };
           }
-          // lib.attrsets.optionalAttrs (config.ar.users.aly.syncthing.syncROMs) {
+          // lib.attrsets.optionalAttrs (config.steamed-nix.users.aly.syncthing.syncROMs) {
             "roms" = {
               devices = ["lavaridge" "mauville" "pacifidlog" "petalburg"];
               id = "emudeck";

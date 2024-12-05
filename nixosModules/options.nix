@@ -1,5 +1,5 @@
 {lib, ...}: {
-  options.ar = {
+  options.steamed-nix = {
     apps = {
       emudeck.enable = lib.mkEnableOption "EmuDeck emulator manager.";
       firefox.enable = lib.mkEnableOption "Firefox Web Browser.";

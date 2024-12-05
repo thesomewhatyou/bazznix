@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.ar.apps.podman.enable {
+  config = lib.mkIf config.steamed-nix.apps.podman.enable {
     virtualisation = {
       oci-containers = {backend = "podman";};
       podman = {

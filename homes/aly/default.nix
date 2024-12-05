@@ -53,7 +53,7 @@ self: {pkgs, ...}: {
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
 
-  ar.home = {
+  steamed-nix.home = {
     apps = {
       fastfetch.enable = true;
       shell.enable = true;

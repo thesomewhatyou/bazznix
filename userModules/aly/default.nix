@@ -6,11 +6,11 @@
 }: {
   imports = [./syncthing.nix];
 
-  config = lib.mkIf config.ar.users.aly.enable {
+  config = lib.mkIf config.steamed-nix.users.aly.enable {
     users.users.aly = {
       description = "Aly Raffauf";
-      extraGroups = config.ar.users.defaultGroups;
-      hashedPassword = config.ar.users.aly.password;
+      extraGroups = config.steamed-nix.users.defaultGroups;
+      hashedPassword = config.steamed-nix.users.aly.password;
       isNormalUser = true;
 
       openssh.authorizedKeys = {

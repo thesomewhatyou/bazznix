@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.ar.home;
+  cfg = config.steamed-nix.home;
 in {
   config = lib.mkIf cfg.theme.enable {
     home.packages = [

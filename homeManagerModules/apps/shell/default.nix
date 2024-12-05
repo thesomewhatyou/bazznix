@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.shell.enable {
+  config = lib.mkIf config.steamed-nix.home.apps.shell.enable {
     home.shellAliases = {
       cat = lib.getExe pkgs.bat;
       grep = lib.getExe config.programs.ripgrep.package;
@@ -20,10 +20,7 @@
         icons = "auto";
       };
 
-      fzf = {
-        enable = true;
-        tmux.enableShellIntegration = true;
-      };
+      fzf.enable = true;
 
       oh-my-posh = {
         enable = true;

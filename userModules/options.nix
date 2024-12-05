@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.ar.users = let
+  options.steamed-nix.users = let
     mkUser = user: {
       enable = lib.mkEnableOption "${user}.";
 
@@ -52,7 +52,7 @@
 
           syncMusic = lib.mkOption {
             description = "Whether to sync music folder.";
-            default = config.ar.users.aly.syncthing.enable;
+            default = config.steamed-nix.users.aly.syncthing.enable;
             type = lib.types.bool;
           };
 
