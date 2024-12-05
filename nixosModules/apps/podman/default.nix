@@ -1,16 +1,19 @@
 {
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.steamed-nix.apps.podman.enable {
+    environment.systemPackages = [pkgs.distrobox];
+
     virtualisation = {
       oci-containers = {backend = "podman";};
+
       podman = {
-        # Required for containers under podman-compose to be able to talk to each other.
-        defaultNetwork.settings.dns_enabled = true;
         enable = true;
         autoPrune.enable = true;
+        defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
       };
     };
   };
