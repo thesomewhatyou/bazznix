@@ -19,11 +19,6 @@
       url = "github:nix-community/home-manager/master";
     };
 
-    iio-hyprland = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:JeanSchoeller/iio-hyprland";
-    };
-
     jovian = {
       url = "github:Jovian-Experiments/Jovian-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -127,16 +122,12 @@
     homeManagerModules = {
       default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
-      dustin = import ./homes/dustin self;
     };
 
     nixosModules = {
-      common-auto-upgrade = import ./common/autoUpgrade.nix;
       common-base = import ./common/base.nix;
       common-locale = import ./common/locale.nix;
       common-mauville-share = import ./common/samba.nix;
-      common-nix = import ./common/nix.nix;
-      common-pkgs = import ./common/pkgs.nix;
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;
 
