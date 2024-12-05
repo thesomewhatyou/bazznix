@@ -4,10 +4,6 @@
   self,
   ...
 }: {
-  imports = [
-    ./kde
-  ];
-
   config =
     lib.mkIf (
       config.steamed-nix.home.desktop.kde.enable
