@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   options.ar = {
     apps = {
       emudeck.enable = lib.mkEnableOption "EmuDeck emulator manager.";
@@ -15,8 +11,6 @@
       kde.enable = lib.mkEnableOption "KDE desktop session.";
       steam.enable = lib.mkEnableOption "Steam + Gamescope session.";
     };
-
-    laptopMode = lib.mkEnableOption "Enable laptop configuration.";
 
     services.flatpak.enable = lib.mkEnableOption "Flatpak support with GUI.";
   };

@@ -17,8 +17,6 @@
     self.nixosModules.common-base
     self.nixosModules.common-locale
     self.nixosModules.common-mauville-share
-    self.nixosModules.common-nix
-    self.nixosModules.common-pkgs
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-lenovo-legion-go
@@ -86,7 +84,6 @@
   };
 
   networking.hostName = "pacifidlog";
-  nixpkgs.overlays = [self.overlays.tablet];
   programs.steam.platformOptimizations.enable = true;
 
   services = {
@@ -120,7 +117,6 @@
     };
 
     desktop.kde.enable = true;
-    laptopMode = true;
     services.flatpak.enable = true;
 
     users.aly = {

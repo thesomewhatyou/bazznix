@@ -1,8 +1,4 @@
-self: {
-  config,
-  pkgs,
-  ...
-}: {
+self: {pkgs, ...}: {
   imports = [
     ./firefox
     self.homeManagerModules.default
@@ -23,7 +19,7 @@ self: {
       vesktop
     ];
 
-    stateVersion = "24.05";
+    stateVersion = "24.11";
     username = "aly";
   };
 
