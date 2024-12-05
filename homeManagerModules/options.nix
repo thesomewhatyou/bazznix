@@ -18,18 +18,6 @@
       };
     };
 
-    services = {
-      easyeffects = {
-        enable = lib.mkEnableOption "EasyEffects user service.";
-
-        preset = lib.mkOption {
-          description = "Name of preset to start with.";
-          default = "";
-          type = lib.types.str;
-        };
-      };
-    };
-
     theme.enable = lib.mkEnableOption "Gtk, Qt, and application colors.";
   };
 }
