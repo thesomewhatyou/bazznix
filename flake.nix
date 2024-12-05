@@ -96,13 +96,7 @@
         });
 
     forAllHosts = self.inputs.nixpkgs.lib.genAttrs [
-      "fallarbor"
-      "lavaridge"
-      "mauville"
       "pacifidlog"
-      "petalburg"
-      "rustboro"
-      "slateport"
     ];
   in {
     devShells = forAllLinuxSystems ({pkgs}: {
@@ -114,7 +108,6 @@
             mdformat
             nh
             nix-update
-            ruby
             sbctl
           ])
           ++ [
