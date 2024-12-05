@@ -1,7 +1,4 @@
-self: {
-  pkgs,
-  ...
-}: {
+self: {pkgs, ...}: {
   imports = [
     ./firefox
     self.homeManagerModules.default

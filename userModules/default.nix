@@ -1,7 +1,6 @@
 self: {
   imports = [
     ./aly
-    ./dustin
     ./options.nix
   ];
 
