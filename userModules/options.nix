@@ -63,7 +63,5 @@
           };
         };
       };
-
-    dustin = mkUser "dustin";
   };
 }
