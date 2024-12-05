@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf config.ar.apps.firefox.enable {
+  config = lib.mkIf config.steamed-nix.apps.firefox.enable {
     programs.firefox = {
       enable = true;
       policies = {

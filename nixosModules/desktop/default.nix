@@ -10,7 +10,7 @@
 
   config =
     lib.mkIf (
-      config.ar.desktop.kde.enable
+      config.steamed-nix.desktop.kde.enable
     ) {
       boot = {
         consoleLogLevel = 0;

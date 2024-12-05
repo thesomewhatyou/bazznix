@@ -10,13 +10,13 @@
 
   config =
     lib.mkIf (
-      config.ar.home.desktop.kde.enable
+      config.steamed-nix.home.desktop.kde.enable
     ) {
       dconf = {
         enable = true;
         settings = {
           "org/gnome/desktop/wm/preferences".button-layout =
-            if config.ar.home.desktop.kde.enable
+            if config.steamed-nix.home.desktop.kde.enable
             then "appmenu:minimize,maximize,close"
             else "appmenu:close";
 

@@ -110,7 +110,7 @@
   system.stateVersion = "24.11";
   systemd.services.handheld-daemon.path = with pkgs; [hhd-ui lsof];
 
-  ar = {
+  steamed-nix = {
     apps = {
       firefox.enable = true;
       steam.enable = true;

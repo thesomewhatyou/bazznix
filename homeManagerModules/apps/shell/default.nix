@@ -4,35 +4,13 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.ar.home.apps.shell.enable {
+  config = lib.mkIf config.steamed-nix.home.apps.shell.enable {
     home.shellAliases = {
       cat = lib.getExe pkgs.bat;
       grep = lib.getExe config.programs.ripgrep.package;
     };
 
     programs = {
-      bash = {
-        enable = true;
-        enableCompletion = true;
-        enableVteIntegration = true;
-
-        shellOptions = [
-          "autocd"
-          "cdspell"
-          "checkjobs"
-          "checkwinsize"
-          "dirspell"
-          "dotglob"
-          "extglob"
-          "globstar"
-          "histappend"
-        ];
-
-        initExtra = ''
-          export PS1="[\[$(tput setaf 27)\]\u\[$(tput setaf 135)\]@\[$(tput setaf 45)\]\h:\[$(tput setaf 33)\]\w] \[$(tput sgr0)\]$ "
-        '';
-      };
-
       direnv.enable = true;
 
       eza = {
@@ -42,10 +20,7 @@
         icons = "auto";
       };
 
-      fzf = {
-        enable = true;
-        tmux.enableShellIntegration = true;
-      };
+      fzf.enable = true;
 
       oh-my-posh = {
         enable = true;
