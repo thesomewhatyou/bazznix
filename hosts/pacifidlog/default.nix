@@ -112,7 +112,6 @@
 
   steamed-nix = {
     apps = {
-      firefox.enable = true;
       steam.enable = true;
     };
 
