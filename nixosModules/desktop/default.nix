@@ -20,6 +20,11 @@
 
       environment = {
         sessionVariables.NIXOS_OZONE_WL = "1";
+
+        systemPackages = with pkgs; [
+          adwaita-icon-theme
+          liberation_ttf
+        ];
       };
 
       hardware.logitech.wireless = {

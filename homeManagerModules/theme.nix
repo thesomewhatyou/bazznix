@@ -7,11 +7,6 @@
   cfg = config.steamed-nix.home;
 in {
   config = lib.mkIf cfg.theme.enable {
-    home.packages = [
-      pkgs.adwaita-icon-theme
-      pkgs.liberation_ttf
-    ];
-
     stylix = {
       iconTheme = {
         enable = true;
