@@ -1,9 +1,7 @@
 {lib, ...}: {
   options.steamed-nix = {
     apps = {
-      emudeck.enable = lib.mkEnableOption "EmuDeck emulator manager.";
-      firefox.enable = lib.mkEnableOption "Firefox Web Browser.";
-      podman.enable = lib.mkEnableOption "Podman for OCI container support.";
+      emudeck.enable = lib.mkEnableOption "EmuDeck emulator manager.";      podman.enable = lib.mkEnableOption "Podman for OCI container support.";
       steam.enable = lib.mkEnableOption "Valve's Steam for video games.";
     };
 
