@@ -4,5 +4,6 @@ self: {
     ./desktop
     ./options.nix
     ./services
+    ./shell
   ];
 }
