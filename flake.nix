@@ -120,7 +120,6 @@
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
     homeManagerModules = {
-      default = import ./homeManagerModules self;
       aly = import ./homes/aly self;
     };
 

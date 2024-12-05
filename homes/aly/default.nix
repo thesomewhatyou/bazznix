@@ -1,8 +1,6 @@
 self: {pkgs, ...}: {
   imports = [
     ./firefox
-    self.homeManagerModules.default
-    self.inputs.agenix.homeManagerModules.default
     self.inputs.nur.hmModules.nur
   ];
 
@@ -15,7 +13,6 @@ self: {pkgs, ...}: {
       nicotine-plus
       obsidian
       tauon
-      transmission-remote-gtk
       vesktop
     ];
 
@@ -52,13 +49,4 @@ self: {pkgs, ...}: {
   };
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
-
-  steamed-nix.home = {
-    apps = {
-      fastfetch.enable = true;
-      shell.enable = true;
-    };
-
-    theme.enable = true;
-  };
 }
