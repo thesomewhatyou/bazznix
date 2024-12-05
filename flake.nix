@@ -178,7 +178,6 @@
     );
 
     overlays = {
-      tablet = import ./overlays/tablet.nix;
       default = import ./overlays/default.nix {inherit self;};
     };
 

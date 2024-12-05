@@ -84,7 +84,6 @@
   };
 
   networking.hostName = "pacifidlog";
-  nixpkgs.overlays = [self.overlays.tablet];
   programs.steam.platformOptimizations.enable = true;
 
   services = {
