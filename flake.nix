@@ -192,6 +192,7 @@
 
       emudeck = pkgs.callPackage ./pkgs/emudeck.nix {};
       hhd-ui = pkgs.callPackage ./pkgs/hhd-ui.nix {};
+      steam-rom-manager = pkgs.callPackage ./pkgs/steam-rom-manager.nix {};
     });
   };
 }

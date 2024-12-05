@@ -39,7 +39,7 @@ appimageTools.wrapType2 rec {
   '';
 
   meta = with lib; {
-    description = "EmuDeck utility to manage ROMs on handheld PCs";
+    description = "EmuDeck utility to manage ROMs on handheld PCs.";
     homepage = "https://github.com/EmuDeck/emudeck-electron";
     license = licenses.mit;
     mainProgram = "emudeck";
