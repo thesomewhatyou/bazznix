@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   options.ar = {
     apps = {
       emudeck.enable = lib.mkEnableOption "EmuDeck emulator manager.";
