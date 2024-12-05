@@ -117,7 +117,6 @@
     };
 
     desktop.kde.enable = true;
-    laptopMode = true;
     services.flatpak.enable = true;
 
     users.aly = {
