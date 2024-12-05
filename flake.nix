@@ -210,7 +210,6 @@
 
       emudeck = pkgs.callPackage ./pkgs/emudeck.nix {};
       hhd-ui = pkgs.callPackage ./pkgs/hhd-ui.nix {};
-      rofi-bluetooth = pkgs.callPackage ./pkgs/rofi-bluetooth.nix {};
     });
   };
 }
