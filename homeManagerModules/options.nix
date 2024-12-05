@@ -1,16 +1,10 @@
 {
   lib,
   osConfig,
-  pkgs,
   ...
 }: {
   options.ar.home = {
     apps = {
-      chromium = {
-        enable = lib.mkEnableOption "Chromium-based browser with default extensions.";
-        package = lib.mkPackageOption pkgs "brave" {};
-      };
-
       fastfetch.enable = lib.mkEnableOption "Fastfetch.";
       firefox.enable = lib.mkEnableOption "Firefox web browser.";
       shell.enable = lib.mkEnableOption "Shell with defaults.";

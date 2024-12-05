@@ -24,6 +24,17 @@ self: {pkgs, ...}: {
   };
 
   programs = {
+    chromium = {
+      enable = true;
+      package = pkgs.brave;
+
+      extensions = [
+        {id = "dnhpnfgdlenaccegplpojghhmaamnnfp";} # augmented steam
+        {id = "nngceckbapebfimnlniiiahkandclblb";} # bitwarden
+        {id = "ocabkmapohekeifbkoelpmppmfbcibna";} # zoom redirector
+      ];
+    };
+
     git = {
       enable = true;
       lfs.enable = true;
@@ -44,9 +55,7 @@ self: {pkgs, ...}: {
 
   ar.home = {
     apps = {
-      chromium.enable = true;
       fastfetch.enable = true;
-      firefox.enable = true;
       shell.enable = true;
     };
 
