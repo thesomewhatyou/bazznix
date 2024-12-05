@@ -5,9 +5,6 @@ self: {
 }: {
   imports = [
     ./firefox
-    ./mail
-    ./secrets.nix
-    ./windowManagers
     self.homeManagerModules.default
     self.inputs.agenix.homeManagerModules.default
     self.inputs.nur.hmModules.nur
@@ -44,19 +41,7 @@ self: {
       };
     };
 
-    gitui.enable = true;
     home-manager.enable = true;
-
-    rbw = {
-      enable = true;
-
-      settings = {
-        base_url = "https://passwords.raffauflabs.com";
-        email = "alyraffauf@fastmail.com";
-        lock_timeout = 14400;
-        pinentry = pkgs.pinentry-gnome3;
-      };
-    };
   };
 
   systemd.user.startServices = true; # Needed for auto-mounting agenix secrets.
@@ -66,16 +51,7 @@ self: {
       chromium.enable = true;
       fastfetch.enable = true;
       firefox.enable = true;
-      helix.enable = true;
-      kitty.enable = true;
       shell.enable = true;
-      vsCodium.enable = true;
-      yazi.enable = true;
-    };
-
-    defaultApps = {
-      enable = true;
-      webBrowser = config.ar.home.apps.chromium.package;
     };
 
     theme.enable = true;
