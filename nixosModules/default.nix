@@ -99,6 +99,19 @@ self: {
         };
       };
 
+      handheld-daemon = {
+        enable = true;
+
+        package = with pkgs;
+          handheld-daemon.overrideAttrs (oldAttrs: {
+            propagatedBuildInputs =
+              oldAttrs.propagatedBuildInputs
+              ++ [pkgs.adjustor];
+          });
+
+        ui.enable = true;
+      };
+
       openssh = {
         enable = true;
         openFirewall = true;

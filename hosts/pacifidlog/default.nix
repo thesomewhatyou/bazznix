@@ -77,19 +77,7 @@
   programs.steam.platformOptimizations.enable = true;
 
   services = {
-    handheld-daemon = {
-      enable = true;
-
-      package = with pkgs;
-        handheld-daemon.overrideAttrs (oldAttrs: {
-          propagatedBuildInputs =
-            oldAttrs.propagatedBuildInputs
-            ++ [pkgs.adjustor];
-        });
-
-      ui.enable = true;
-      user = "aly";
-    };
+    handheld-daemon.user = "aly";
 
     pipewire.lowLatency = {
       enable = true;
