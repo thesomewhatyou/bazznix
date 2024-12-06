@@ -1,5 +1,7 @@
 {lib, ...}: {
   options.steamed-nix = {
+    enable = lib.mkEnableOption "steamed-nix with sane defaults.";
+
     apps = {
       emudeck.enable = lib.mkEnableOption "EmuDeck emulator manager.";
       podman.enable = lib.mkEnableOption "Podman for OCI container support.";

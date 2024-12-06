@@ -124,8 +124,7 @@
     };
 
     nixosModules = {
-      common-base = import ./common/base.nix;
-      common-locale = import ./common/locale.nix;
+      common-us-locale = import ./common/us-locale.nix;
       common-mauville-share = import ./common/samba.nix;
       common-tailscale = import ./common/tailscale.nix;
       common-wifi-profiles = import ./common/wifi.nix;

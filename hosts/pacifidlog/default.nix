@@ -14,8 +14,7 @@
     self.inputs.jovian.nixosModules.default
     self.inputs.nix-gaming.nixosModules.pipewireLowLatency
     self.inputs.nix-gaming.nixosModules.platformOptimizations
-    self.nixosModules.common-base
-    self.nixosModules.common-locale
+    self.nixosModules.common-us-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-tailscale
     self.nixosModules.common-wifi-profiles
@@ -111,6 +110,8 @@
   systemd.services.handheld-daemon.path = with pkgs; [hhd-ui lsof];
 
   steamed-nix = {
+    enable = true;
+
     apps = {
       steam.enable = true;
     };

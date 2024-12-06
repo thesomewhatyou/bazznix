@@ -14,8 +14,11 @@
 
       systemPackages = with pkgs; [
         bat
-        ripgrep
         eza
+        git
+        htop
+        inxi
+        ripgrep
         zellij
       ];
     };
