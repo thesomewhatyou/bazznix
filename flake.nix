@@ -144,7 +144,6 @@
       hw-framework-13-amd-7000 = import ./hwModules/framework/13/amd-7000;
       hw-framework-13-intel-11th = import ./hwModules/framework/13/intel-11th;
       hw-lenovo-legion-go = import ./hwModules/lenovo/legion/go;
-      hw-thinkpad-t440p = import ./hwModules/thinkpad/t440p;
 
       nixos = import ./nixosModules self;
       users = import ./userModules self;
