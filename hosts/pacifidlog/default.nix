@@ -91,13 +91,6 @@
   bazznix = {
     enable = true;
 
-    apps = {
-      steam.enable = true;
-    };
-
-    desktop.kde.enable = true;
-    services.flatpak.enable = true;
-
     users.aly = {
       enable = true;
       password = "$y$j9T$CXjk5Z9e2PXbSsWh5CK.81$I9Hm/Oa4KcYMqPi8KMBfsEv5NzoXCgaCK5xhyGeikH7";

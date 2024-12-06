@@ -12,13 +12,24 @@ self: {
     ./shell
   ];
   config = lib.mkIf config.bazznix.enable {
+    bazznix = {
+      desktop.kde.enable = lib.mkDefault true;
+
+      apps = {
+        emudeck.enable = lib.mkDefault true;
+        podman.enable = lib.mkDefault true;
+        steam.enable = lib.mkDefault true;
+      };
+
+      services.flatpak.enable = lib.mkDefault true;
+    };
+
     environment = {
       systemPackages = with pkgs; [
-        emudeck
         heroic
         lutris
-        steam-rom-manager
       ];
+
       variables.FLAKE = lib.mkDefault "github:alyraffauf/bazznix";
     };
 

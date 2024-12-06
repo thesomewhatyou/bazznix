@@ -5,7 +5,7 @@
   ...
 }: {
   config = lib.mkIf (config.bazznix.apps.emudeck.enable) {
-    environment.systemPackages = with pkgs; [emudeck];
+    environment.systemPackages = with pkgs; [emudeck steam-rom-manager];
 
     bazznix = {
       apps.steam.enable = lib.mkDefault true;
