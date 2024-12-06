@@ -123,6 +123,7 @@ self: {
           });
 
         ui.enable = true;
+        user = config.bazznix.user;
       };
 
       openssh = {

@@ -14,7 +14,12 @@
     };
 
     shell.enable = lib.mkEnableOption "Customized CLI environment.";
-
     services.flatpak.enable = lib.mkEnableOption "Flatpak support with GUI.";
+
+    user = lib.mkOption {
+      description = "Default user to run Steam with.";
+      default = null;
+      type = lib.types.nullOr lib.types.str;
+    };
   };
 }

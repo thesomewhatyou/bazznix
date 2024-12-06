@@ -45,7 +45,7 @@
   jovian = {
     decky-loader = {
       enable = true;
-      user = "aly";
+      user = config.bazznix.user;
     };
 
     hardware.has.amd.gpu = true;
@@ -60,7 +60,7 @@
         STEAM_GAMESCOPE_COLOR_MANAGED = "0";
       };
 
-      user = "aly";
+      user = config.bazznix.user;
     };
 
     steamos = {
@@ -77,8 +77,6 @@
   programs.steam.platformOptimizations.enable = true;
 
   services = {
-    handheld-daemon.user = "aly";
-
     pipewire.lowLatency = {
       enable = true;
       quantum = 256;
@@ -90,6 +88,7 @@
 
   bazznix = {
     enable = true;
+    user = "aly";
 
     users.aly = {
       enable = true;
