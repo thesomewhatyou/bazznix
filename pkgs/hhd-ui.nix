@@ -15,7 +15,7 @@ appimageTools.wrapType2 rec {
   meta = with lib; {
     description = "Graphical user interface for Handheld Daemon settings from Steam Big Picture Mode, the Desktop, and the Web.";
     homepage = "https://github.com/hhd-dev/hhd-ui/";
-    license = licenses.mit;
+    license = licenses.gpl3Plus;
     mainProgram = "hhd-ui";
     platforms = platforms.linux;
   };

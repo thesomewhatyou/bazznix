@@ -27,7 +27,7 @@ appimageTools.wrapType2 rec {
   meta = with lib; {
     description = "The bulk game importer and artwork manager for Steam.";
     homepage = "https://github.com/SteamGridDB/steam-rom-manager";
-    license = licenses.mit;
+    license = licenses.gpl3Plus;
     mainProgram = "steam-rom-manager";
     platforms = platforms.linux;
   };
