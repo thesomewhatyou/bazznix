@@ -39,16 +39,7 @@
     };
   };
 
-  environment = {
-    systemPackages = with pkgs; [
-      heroic
-      hhd-ui
-      lutris
-    ];
-
-    variables.GDK_SCALE = "2";
-  };
-
+  environment.variables.GDK_SCALE = "2";
   hardware.pulseaudio.enable = lib.mkForce false;
 
   jovian = {

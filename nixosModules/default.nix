@@ -1,6 +1,7 @@
 self: {
   config,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -11,7 +12,16 @@ self: {
     ./shell
   ];
   config = lib.mkIf config.steamed-nix.enable {
-    environment.variables.FLAKE = lib.mkDefault "github:alyraffauf/steamed-nix";
+    environment = {
+      systemPackages = with pkgs; [
+        emudeck
+        heroic
+        hhd-ui
+        lutris
+        steam-rom-manager
+      ];
+      variables.FLAKE = lib.mkDefault "github:alyraffauf/steamed-nix";
+    };
 
     programs = {
       dconf.enable = true;
