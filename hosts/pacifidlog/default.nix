@@ -87,6 +87,7 @@
             ++ [pkgs.adjustor];
         });
 
+      ui.enable = true;
       user = "aly";
     };
 
@@ -98,7 +99,6 @@
   };
 
   system.stateVersion = "24.11";
-  systemd.services.handheld-daemon.path = with pkgs; [hhd-ui lsof];
 
   steamed-nix = {
     enable = true;

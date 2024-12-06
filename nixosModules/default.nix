@@ -16,7 +16,6 @@ self: {
       systemPackages = with pkgs; [
         emudeck
         heroic
-        hhd-ui
         lutris
         steam-rom-manager
       ];

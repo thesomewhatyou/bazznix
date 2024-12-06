@@ -1,7 +1,6 @@
 # Default overlay.
 {self}: final: prev: {
   adjustor = self.packages.${prev.system}.adjustor;
-  hhd-ui = self.packages.${prev.system}.hhd-ui;
   emudeck = self.packages.${prev.system}.emudeck;
   steam-rom-manager = self.packages.${prev.system}.steam-rom-manager;
 
