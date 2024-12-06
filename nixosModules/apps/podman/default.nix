@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.steamed-nix.apps.podman.enable {
+  config = lib.mkIf config.bazznix.apps.podman.enable {
     environment.systemPackages = [pkgs.distrobox];
 
     virtualisation = {

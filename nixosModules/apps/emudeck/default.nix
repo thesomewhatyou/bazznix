@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf (config.steamed-nix.apps.emudeck.enable) {
+  config = lib.mkIf (config.bazznix.apps.emudeck.enable) {
     environment.systemPackages = with pkgs; [emudeck];
 
-    steamed-nix = {
+    bazznix = {
       apps.steam.enable = lib.mkDefault true;
       services.flatpak.enable = lib.mkDefault true;
     };

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.steamed-nix.services.flatpak.enable {
+  config = lib.mkIf config.bazznix.services.flatpak.enable {
     environment.systemPackages = with pkgs; [gnome-software];
 
     fileSystems = let

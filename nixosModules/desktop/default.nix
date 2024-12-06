@@ -10,7 +10,7 @@
 
   config =
     lib.mkIf (
-      config.steamed-nix.desktop.kde.enable
+      config.bazznix.desktop.kde.enable
     ) {
       boot = {
         consoleLogLevel = 0;
@@ -53,7 +53,7 @@
             {
               settings = {
                 "org/gnome/desktop/wm/preferences".button-layout =
-                  if config.steamed-nix.desktop.kde.enable
+                  if config.bazznix.desktop.kde.enable
                   then "appmenu:minimize,maximize,close"
                   else "appmenu:close";
 

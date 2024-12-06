@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.steamed-nix.shell.enable {
+  config = lib.mkIf config.bazznix.shell.enable {
     environment = {
       shellAliases = {
         cat = lib.getExe pkgs.bat;

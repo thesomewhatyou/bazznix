@@ -88,7 +88,7 @@
 
   system.stateVersion = "24.11";
 
-  steamed-nix = {
+  bazznix = {
     enable = true;
 
     apps = {

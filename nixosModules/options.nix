@@ -1,6 +1,6 @@
 {lib, ...}: {
-  options.steamed-nix = {
-    enable = lib.mkEnableOption "steamed-nix with sane defaults.";
+  options.bazznix = {
+    enable = lib.mkEnableOption "bazznix with sane defaults.";
 
     apps = {
       emudeck.enable = lib.mkEnableOption "EmuDeck emulator manager.";

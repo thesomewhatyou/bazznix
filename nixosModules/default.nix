@@ -11,7 +11,7 @@ self: {
     ./services
     ./shell
   ];
-  config = lib.mkIf config.steamed-nix.enable {
+  config = lib.mkIf config.bazznix.enable {
     environment = {
       systemPackages = with pkgs; [
         emudeck
@@ -19,7 +19,7 @@ self: {
         lutris
         steam-rom-manager
       ];
-      variables.FLAKE = lib.mkDefault "github:alyraffauf/steamed-nix";
+      variables.FLAKE = lib.mkDefault "github:alyraffauf/bazznix";
     };
 
     programs = {

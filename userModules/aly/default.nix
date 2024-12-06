@@ -6,11 +6,11 @@
 }: {
   imports = [./syncthing.nix];
 
-  config = lib.mkIf config.steamed-nix.users.aly.enable {
+  config = lib.mkIf config.bazznix.users.aly.enable {
     users.users.aly = {
       description = "Aly Raffauf";
-      extraGroups = config.steamed-nix.users.defaultGroups;
-      hashedPassword = config.steamed-nix.users.aly.password;
+      extraGroups = config.bazznix.users.defaultGroups;
+      hashedPassword = config.bazznix.users.aly.password;
       isNormalUser = true;
 
       openssh.authorizedKeys = {

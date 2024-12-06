@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.steamed-nix.desktop.kde.enable {
+  config = lib.mkIf config.bazznix.desktop.kde.enable {
     environment = {
       plasma6.excludePackages = lib.attrsets.attrValues {
         inherit
