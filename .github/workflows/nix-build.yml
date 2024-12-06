@@ -17,7 +17,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: cachix/cachix-action@master
         with:
-          name: alyraffauf
+          name: bazznix
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Build adjustor package
         run: nix build --accept-flake-config .#packages.x86_64-linux.adjustor
@@ -31,7 +31,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: cachix/cachix-action@master
         with:
-          name: alyraffauf
+          name: bazznix
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Build clean-install package
         run: nix build --accept-flake-config .#packages.x86_64-linux.clean-install
@@ -45,7 +45,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: cachix/cachix-action@master
         with:
-          name: alyraffauf
+          name: bazznix
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Build emudeck package
         run: nix build --accept-flake-config .#packages.x86_64-linux.emudeck
@@ -59,7 +59,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: cachix/cachix-action@master
         with:
-          name: alyraffauf
+          name: bazznix
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Build steam-rom-manager package
         run: nix build --accept-flake-config .#packages.x86_64-linux.steam-rom-manager
@@ -75,7 +75,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: cachix/cachix-action@master
         with:
-          name: alyraffauf
+          name: bazznix
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Build pacifidlog
         run: nix build --accept-flake-config .#nixosConfigurations.pacifidlog.config.system.build.toplevel
