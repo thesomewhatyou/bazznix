@@ -1,7 +1,6 @@
 # Lenovo Legion Go
 {
   config,
-  pkgs,
   lib,
   self,
   ...
