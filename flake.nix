@@ -39,8 +39,6 @@
       url = "github:fufexan/nix-gaming";
     };
 
-    nur.url = "github:nix-community/NUR";
-
     stylix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:danth/stylix/master";

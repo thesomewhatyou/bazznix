@@ -1,9 +1,4 @@
 self: {pkgs, ...}: {
-  imports = [
-    ./firefox
-    self.inputs.nur.hmModules.nur
-  ];
-
   home = {
     homeDirectory = "/home/aly";
 
