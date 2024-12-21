@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   self,
   ...
@@ -36,9 +35,6 @@ in {
     ];
 
     extraModulePackages = with config.boot.kernelPackages; [acpi_call];
-
-    # Xanmod seems more responsive under load
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
   };
 
   hardware.sensor.iio.enable = true;

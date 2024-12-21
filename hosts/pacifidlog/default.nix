@@ -11,11 +11,9 @@
     ./stylix.nix
     (import ./../../disko/luks-btrfs-subvolumes.nix {disks = ["/dev/nvme0n1"];})
     self.inputs.jovian.nixosModules.default
-    self.inputs.nix-gaming.nixosModules.pipewireLowLatency
-    self.inputs.nix-gaming.nixosModules.platformOptimizations
-    self.nixosModules.common-us-locale
     self.nixosModules.common-mauville-share
     self.nixosModules.common-tailscale
+    self.nixosModules.common-us-locale
     self.nixosModules.common-wifi-profiles
     self.nixosModules.hw-lenovo-legion-go
   ];
@@ -73,16 +71,6 @@
   };
 
   networking.hostName = "pacifidlog";
-  programs.steam.platformOptimizations.enable = true;
-
-  services = {
-    pipewire.lowLatency = {
-      enable = true;
-      quantum = 256;
-      rate = 48000;
-    };
-  };
-
   system.stateVersion = "24.11";
 
   bazznix = {
