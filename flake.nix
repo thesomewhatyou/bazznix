@@ -173,7 +173,33 @@
             }
           ];
         }
-    );
+    ) // {
+      # ISO installer configuration
+      installer = self.inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit self;};
+        modules = [
+          "${self.inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          self.nixosModules.nixos
+          {
+            # Add bazznix modules to the installer
+            isoImage.isoName = "bazznix-installer.iso";
+            
+            # Enable basic gaming and handheld support in the installer
+            environment.systemPackages = with self.inputs.nixpkgs.legacyPackages.x86_64-linux; [
+              git
+              vim
+              curl
+              wget
+            ];
+            
+            # Include basic hardware support
+            hardware.enableAllFirmware = true;
+            nixpkgs.config.allowUnfree = true;
+          }
+        ];
+      };
+    };
 
     overlays = {
       default = import ./overlays/default.nix {inherit self;};

@@ -1,0 +1,71 @@
+name: "Release"
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name for release'
+        required: true
+        type: string
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # Remove unneeded software to free up disk space
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+      
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      
+      - uses: DeterminateSystems/nix-installer-action@main
+      
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      
+      - uses: cachix/cachix-action@master
+        with:
+          name: bazznix
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      
+      - name: Build ISO
+        run: |
+          nix build --accept-flake-config .#nixosConfigurations.installer.config.system.build.isoImage
+          ls -la result/iso/
+      
+      - name: Get ISO filename
+        id: iso
+        run: |
+          ISO_FILE=$(ls result/iso/*.iso)
+          ISO_NAME=$(basename "$ISO_FILE")
+          echo "path=$ISO_FILE" >> $GITHUB_OUTPUT
+          echo "name=$ISO_NAME" >> $GITHUB_OUTPUT
+      
+      - name: Upload ISO to release
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ${{ steps.iso.outputs.path }}
+          asset_name: ${{ steps.iso.outputs.name }}
+          asset_content_type: application/octet-stream
+      
+      - name: Upload ISO artifact (for workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: bazznix-installer-iso
+          path: ${{ steps.iso.outputs.path }}
+          retention-days: 30
