@@ -182,20 +182,49 @@
           "${self.inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
           self.nixosModules.nixos
           {
-            # Add bazznix modules to the installer
+            # Configure the ISO
             isoImage.isoName = "bazznix-installer.iso";
             
-            # Enable basic gaming and handheld support in the installer
+            # Enable bazznix with basic configuration suitable for installer
+            bazznix = {
+              enable = true;
+              user = "nixos"; # Default installer user
+              
+              # Disable services that shouldn't run in installer
+              apps = {
+                emudeck.enable = false;
+                steam.enable = false;
+                podman.enable = false;
+              };
+              
+              services.flatpak.enable = false;
+              desktop.kde.enable = false;
+            };
+            
+            # Include useful packages for installation
             environment.systemPackages = with self.inputs.nixpkgs.legacyPackages.x86_64-linux; [
               git
               vim
               curl
               wget
+              parted
+              gparted
+              ntfs3g
+            ] ++ [
+              self.packages.x86_64-linux.adjustor
+              self.packages.x86_64-linux.clean-install
             ];
             
-            # Include basic hardware support
+            # Hardware support
             hardware.enableAllFirmware = true;
             nixpkgs.config.allowUnfree = true;
+            
+            # Disable some heavy services for the installer
+            services = {
+              handheld-daemon.enable = false;
+            };
+            
+            system.autoUpgrade.enable = false;
           }
         ];
       };

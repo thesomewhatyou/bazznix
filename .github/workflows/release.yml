@@ -40,8 +40,12 @@ jobs:
       
       - name: Build ISO
         run: |
+          echo "Building bazznix installer ISO..."
           nix build --accept-flake-config .#nixosConfigurations.installer.config.system.build.isoImage
+          echo "Build completed. Contents of result/iso/:"
           ls -la result/iso/
+          echo "ISO file details:"
+          ls -lh result/iso/*.iso
       
       - name: Get ISO filename
         id: iso
@@ -53,14 +57,10 @@ jobs:
       
       - name: Upload ISO to release
         if: github.event_name == 'release'
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ steps.iso.outputs.path }}
-          asset_name: ${{ steps.iso.outputs.name }}
-          asset_content_type: application/octet-stream
+          files: ${{ steps.iso.outputs.path }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Upload ISO artifact (for workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
