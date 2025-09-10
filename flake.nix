@@ -24,14 +24,18 @@
         common-tailscale = ./nixosModules/common-tailscale.nix;
       };
 
-      # --- FIX 3: Define packages for `adjustor-build`, `emudeck-build`, etc. ---
+
+      #--- FIX 3: Define packages for `adjustor-build`, `emudeck-build`, etc. ---
       packages.${system} = {
-        # ==> ACTION: Fill in the correct paths to your package definition files <==
         adjustor = pkgs.callPackage ./pkgs/adjustor.nix { };
         emudeck = pkgs.callPackage ./pkgs/emudeck.nix { };
         "steam-rom-manager" = pkgs.callPackage ./pkgs/steam-rom-manager.nix { };
-        # Add other packages like 'clean-install-build' here.
+
+        # --- ADD THIS LINE ---
+        # This defines the missing package and will fix the error.
+        "clean-install" = pkgs.callPackage ./pkgs/clean-install.nix { };
       };
+
 
       # --- FIX 4 & 5: Define NixOS configurations with correct paths and ISO build ---
       nixosConfigurations = {
