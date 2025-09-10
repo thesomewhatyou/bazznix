@@ -77,7 +77,7 @@
           agenix.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
           stylix.nixosModules.stylix
-          ./nixosModules/default.nix
+          (import ./nixosModules/default.nix self)
         ];
         specialArgs = { 
           inherit self agenix lanzaboote jovian disko chaotic stylix wallpapers; 
@@ -88,7 +88,7 @@
         inherit system;
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          ./nixosModules/default.nix
+          (import ./nixosModules/default.nix self)
         ];
         specialArgs = { 
           inherit self; 
