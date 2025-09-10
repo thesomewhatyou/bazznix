@@ -80,7 +80,7 @@
       hw-lenovo-legion-go = ./hwModules/lenovo/legion/go/default.nix;
       
       # Main bazznix module
-      default = ./nixosModules/default.nix;
+      default = import ./nixosModules/default.nix self;
     };
     
     # Home Manager Modules
@@ -89,7 +89,7 @@
     };
     
     # User Modules
-    userModules = import ./userModules/default.nix;
+    userModules = import ./userModules/default.nix self;
     
     # NixOS Configurations
     nixosConfigurations = {

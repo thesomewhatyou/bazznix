@@ -1,6 +1,6 @@
 read -p "Which host are you installing? " HOST
 
-FLAKE=github:alyraffauf/nixcfg#$HOST
+FLAKE=github:thesomewhatyou/bazznix#$HOST
 echo "Installing from $FLAKE"
 
 echo "Warning: Running this script will wipe the currently installed system."
