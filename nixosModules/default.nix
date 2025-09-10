@@ -30,7 +30,7 @@ self: {
         lutris
       ];
 
-      variables.FLAKE = lib.mkDefault "github:alyraffauf/bazznix";
+      variables.FLAKE = lib.mkDefault "github:thesomewhatyou/bazznix";
     };
 
     programs = {
