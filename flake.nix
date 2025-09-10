@@ -50,9 +50,18 @@
     stylix,
     wallpapers,
     ... 
-  }: {
+  }: 
+  let
+    # Create self with inputs for use in configurations
+    selfWithInputs = self // {
+      inputs = { 
+        inherit nixpkgs agenix chaotic disko home-manager jovian lanzaboote stylix wallpapers; 
+      };
+    };
+  in
+  {
     nixosModules = {
-      default = import ./nixosModules self;
+      default = import ./nixosModules selfWithInputs;
       common-mauville-share = ./common/samba.nix;
       common-tailscale = ./common/tailscale.nix;
       common-us-locale = ./common/us-locale.nix;
@@ -60,7 +69,7 @@
       hw-lenovo-legion-go = ./hwModules/lenovo/legion/go/default.nix;
     };
 
-    overlays.default = import ./overlays/default.nix { inherit self; };
+    overlays.default = import ./overlays/default.nix { self = selfWithInputs; };
 
     packages.x86_64-linux = {
       adjustor = nixpkgs.legacyPackages.x86_64-linux.callPackage ./pkgs/adjustor.nix {};
@@ -78,10 +87,11 @@
         modules = [
           ./hosts/pacifidlog/default.nix
           home-manager.nixosModules.home-manager
-          self.nixosModules.default
+          selfWithInputs.nixosModules.default
         ];
         specialArgs = { 
-          inherit self agenix chaotic disko jovian lanzaboote stylix wallpapers; 
+          self = selfWithInputs; 
+          inherit agenix chaotic disko jovian lanzaboote stylix wallpapers; 
         };
       };
       
@@ -89,7 +99,7 @@
         system = "x86_64-linux";
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          self.nixosModules.default
+          selfWithInputs.nixosModules.default
           {
             # Minimal installer configuration
             environment.systemPackages = with nixpkgs.legacyPackages.x86_64-linux; [
@@ -97,7 +107,7 @@
               vim
               curl
               wget
-              self.packages.x86_64-linux.clean-install
+              selfWithInputs.packages.x86_64-linux.clean-install
             ];
             
             # Enable flakes for installation
@@ -105,7 +115,8 @@
           }
         ];
         specialArgs = { 
-          inherit self agenix chaotic disko jovian lanzaboote stylix wallpapers; 
+          self = selfWithInputs; 
+          inherit agenix chaotic disko jovian lanzaboote stylix wallpapers; 
         };
       };
     };
