@@ -67,7 +67,18 @@
     };
     
     # NixOS modules
-    nixosModules = import ./nixosModules self;
+    nixosModules = {
+      default = import ./nixosModules self;
+      
+      # Common modules
+      common-mauville-share = ./common/samba.nix;
+      common-tailscale = ./common/tailscale.nix;
+      common-us-locale = ./common/us-locale.nix;
+      common-wifi-profiles = ./common/wifi.nix;
+      
+      # Hardware modules
+      hw-lenovo-legion-go = ./hwModules/lenovo/legion/go;
+    };
     
     # NixOS configurations
     nixosConfigurations = {
