@@ -1,0 +1,14 @@
+name: "test-build"
+on:
+  workflow_dispatch:
+jobs:
+  test-adjustor-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          fetch-depth: 1
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Build adjustor package
+        run: nix build --accept-flake-config .#packages.x86_64-linux.adjustor
