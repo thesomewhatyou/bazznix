@@ -1,43 +1,66 @@
 {
+  description = "A flake that provides NixOS configurations, packages, and development shells";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Based on your logs, you have many other inputs (stylix, chaotic-cx, etc.).
-    # They should all be declared here.
-    # ... other inputs like stylix
+    # Ensure all other inputs (stylix, etc.) are declared here.
   };
 
-  # Using '@inputs' captures all inputs into a single argument.
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    # --- FIX: Export your shared modules ---
-    # This `nixosModules` output was missing. It fixes the "attribute 'nixosModules' missing"
-    # error by making your shared modules available to your hosts via `self.nixosModules.*`.
-    nixosModules = {
-      # These paths are assumed based on your error log.
-      # Please adjust them if your files are in a different directory.
-      common-mauville-share = ./nixosModules/common-mauville-share.nix;
-      common-tailscale = ./nixosModules/common-tailscale.nix;
-    };
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      # --- FIX 1: Add a formatter for `fmt check` ---
+      formatter.${system} = pkgs.nixpkgs-fmt;
 
-    nixosConfigurations = {
-      pacifidlog = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          # Your host configuration, which likely imports the shared modules using `self`.
-          # e.g., ./hosts/pacifidlog/default.nix or configuration.nix
-          ./hosts/pacifidlog/configuration.nix
-
-          # This line, which you added, correctly fixes the "option `home-manager' does not exist" error.
-          home-manager.nixosModules.home-manager
-        ];
-
-        # Passing all inputs via specialArgs is a robust pattern that makes them
-        # available to all modules in this host configuration.
-        specialArgs = { inherit inputs; };
+      # --- FIX 2: Export shared modules for `pacifidlog` ---
+      nixosModules = {
+        # ==> ACTION: Adjust these paths if they are incorrect <==
+        common-mauville-share = ./nixosModules/common-mauville-share.nix;
+        common-tailscale = ./nixosModules/common-tailscale.nix;
       };
-      # ... other host configurations can go here
+
+      # --- FIX 3: Define packages for `adjustor-build`, `emudeck-build`, etc. ---
+      packages.${system} = {
+        # ==> ACTION: Fill in the correct paths to your package definition files <==
+        adjustor = pkgs.callPackage ./pkgs/adjustor.nix { };
+        emudeck = pkgs.callPackage ./pkgs/emudeck.nix { };
+        "steam-rom-manager" = pkgs.callPackage ./pkgs/steam-rom-manager.nix { };
+        # Add other packages like 'clean-install-build' here.
+      };
+
+      # --- FIX 4 & 5: Define NixOS configurations with correct paths and ISO build ---
+      nixosConfigurations = {
+        # Configuration for your 'pacifidlog' host
+        pacifidlog = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            # ==> ACTION: Use the correct path to your host's main configuration file! <==
+            # This path was incorrect, causing the "path does not exist" error.
+            ./hosts/pacifidlog/default.nix # Or whatever the file is actually named
+
+            # This line fixes the `home-manager` error.
+            home-manager.nixosModules.home-manager
+          ];
+        };
+
+        # Configuration for the ISO build, as expected by your CI
+        installer = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            # ==> ACTION: Provide the path to your ISO's configuration.nix <==
+            ./iso/configuration.nix
+
+            # You might also need home-manager for the installer environment
+            home-manager.nixosModules.home-manager
+          ];
+        };
+      };
     };
-  };
 }
